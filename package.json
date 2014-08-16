@@ -6,6 +6,12 @@
     "type": "git",
     "url": "https://github.com/Josiah/gulp-elasticsearch-indexer.git"
   },
+  "license": "MITNFA",
+  "author": {
+    "name": "Josiah Truasheim",
+    "email": "josiah@jjs.id.au",
+    "url": "https://github.com/Josiah"
+  },
   "keywords": [
     "gulpplugin",
     "elasticsearch"
