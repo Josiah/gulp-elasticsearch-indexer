@@ -2,6 +2,10 @@
   "name": "gulp-elasticsearch-indexer",
   "description": "Index json documents in Elastic Search with Gulp",
   "version": "0.0.0-0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Josiah/gulp-elasticsearch-indexer.git"
+  },
   "keywords": [
     "gulpplugin",
     "elasticsearch"
