@@ -1,6 +1,5 @@
 require! Gulp: 'gulp'
 require! GulpBump: 'gulp-bump'
-require! GulpGit: 'gulp-git'
 require! GulpTagVersion: 'gulp-tag-version'
 require! GulpLiveScript: 'gulp-livescript'
 require! Minimist: 'minimist'
@@ -57,13 +56,13 @@ Gulp.task \publish:tag <[ package:version ]> (done) !->
 
   package-data = JSON.parse package-json.to-string!
 
-  (err) <-! GulpGit.tag package-data.version
+  (err) <-! ChildProcess.exec "git tag #{package-data.version}"
 
   if err?
     done err
     return
 
-  (err) <-! GulpGit.push
+  (err) <-! ChildProcess.exec "git push --tags"
 
   if err?
     done err
