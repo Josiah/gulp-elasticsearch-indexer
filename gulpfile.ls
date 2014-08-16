@@ -6,7 +6,7 @@ require! GulpLiveScript: 'gulp-livescript'
 require! Minimist: 'minimist'
 require! FileSystem: 'fs'
 require! Path: 'path'
-require! Npm: 'npm'
+require! ChildProcess: 'child_process'
 
 const ARGV = Minimist process.argv.slice 2
 const RELEASE_TYPE = switch
@@ -37,7 +37,7 @@ Gulp.task \package:files ->
 
 Gulp.task \package:livescript ->
   Gulp.src <[
-    *.ls
+    index.ls
   ]>
   .pipe GulpLiveScript!
   .pipe Gulp.dest 'pkg'
@@ -73,17 +73,4 @@ Gulp.task \publish:tag <[ package:version ]> (done) !->
   return
 
 Gulp.task \publish:npm <[ publish:tag ]> (done) !->
-  (err, npm) <-! Npm.load
-
-  if err?
-    done err
-    return
-
-  (err) <-! npm.commands.publish 'pkg'
-
-  if err?
-    done err
-    return
-
-  done!
-  return
+  ChildProcess.exec 'npm publish pkg' done
